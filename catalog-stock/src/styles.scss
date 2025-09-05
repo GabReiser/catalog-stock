@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-black);
+}
+
+:root {
+  --color-black: #0A0A0A;        /* preto profundo para fundo principal */
+  --color-primary: #C8B8DB;      /* cor clara para títulos e elementos importantes */
+  --color-secondary: #70587C;    /* cor média para subtítulos e detalhes */
+  --color-accent: #502F4C;       /* cor de destaque em botões e interações */
+  --color-background: #1C1C1C;   /* fundo secundário mais suave */
+}

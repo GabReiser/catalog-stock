@@ -1,0 +1,146 @@
+/* Checkout Container */
+.checkout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  background-color: var(--color-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Fundo com bolhas e blur */
+.checkout-container::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--color-secondary); /* cor igual ao Cart/Home */
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+  filter: blur(150px);
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none; /* não bloqueia cliques */
+}
+
+.checkout-container::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--color-secondary); /* igual à primeira bolha, não mais rosa */
+  border-radius: 50%;
+  bottom: -80px;
+  right: -80px;
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Header fixo */
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--color-secondary);
+  color: #F9F4F5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 10;
+}
+
+/* Formulário de checkout */
+.checkout-form {
+  position: relative;
+  z-index: 1; /* acima do fundo */
+  max-width: 500px;
+  width: 90%;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #502F4C;
+    font-weight: 600;
+  }
+
+  input {
+    width: 90%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #502F4C;
+  }
+
+  button {
+    background: var(--color-primary);
+    color: var(--color-black);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: var(--color-secondary);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+/* Mensagem de confirmação ou erro */
+.message {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .checkout-form {
+    padding: 1.5rem;
+  }
+
+  input {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+.spinner {
+  border: 2px solid #fff;
+  border-top: 2px solid var(--color-black);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

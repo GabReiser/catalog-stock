@@ -1,0 +1,28 @@
+<!-- cart.component.html -->
+<div class="cart-container">
+
+  <!-- Cart vazio -->
+  <div *ngIf="cartService.getCartCount() === 0" class="empty-cart">
+    <p>Seu carrinho está vazio 😢</p>
+  </div>
+
+  <!-- Cart com itens -->
+  <div *ngIf="cartService.getCartCount() > 0" class="cart-items">
+    <div class="cart-item" *ngFor="let item of cartService.getItems(); let i = index">
+      <div class="item-info">
+        <img [src]="item.image" alt="{{ item.name }}" />
+        <p>{{ item.name }} - {{ item.price | currency:'BRL' }}</p>
+      </div>
+      <button (click)="removeItem(i)">Remover</button>
+    </div>
+
+    <!-- Total e ações -->
+    <div class="cart-actions">
+      <p class="total">Total: {{ cartService.getTotal() | currency:'BRL' }}</p>
+      <div class="buttons">
+        <button (click)="continueShopping()">Continuar Comprando</button>
+        <button (click)="goToCheckout()">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>

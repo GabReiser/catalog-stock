@@ -1,0 +1,30 @@
+<div class="home-container">
+
+  <!-- Header -->
+<header class="header">
+  <h1 class="logo">Minha Loja</h1>
+
+  <button class="cart-button" (click)="openCart()">
+    <span class="material-icons">shopping_cart</span>
+    <span class="cart-count" *ngIf="cartService.getCartCount() > 0">
+      {{ cartService.getCartCount() }}
+    </span>
+  </button>
+</header>
+
+
+<!-- Produtos -->
+<section class="products">
+   <div *ngIf="isLoading" class="loading">Carregando produtos...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div class="product-card" *ngFor="let product of products">
+    <img [src]="product.image" alt="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.price | currency:'BRL'}}</p>
+    <button class="add-button" (click)="addToCart(product)">
+      Adicionar
+    </button>
+  </div>
+</section>
+</div>

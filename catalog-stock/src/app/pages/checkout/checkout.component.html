@@ -1,0 +1,21 @@
+<div class="checkout-container">
+
+  <div class="checkout-form">
+    <h2>Dados do Cliente</h2>
+
+    <form #checkoutForm="ngForm" (ngSubmit)="submitOrder()">
+
+      <label for="name">Nome:</label>
+      <input id="name" type="text" name="name" [(ngModel)]="customer.name" required>
+
+      <label for="phone">Telefone:</label>
+      <input id="phone" type="text" name="phone" [(ngModel)]="customer.phone" required>
+
+      <button type="submit" [disabled]="checkoutForm.invalid || isLoading">
+        {{ isLoading ? 'Enviando...' : 'Enviar Pedido' }}
+        <span *ngIf="isLoading" class="spinner"></span>
+      </button>
+    </form>
+  </div>
+
+</div>

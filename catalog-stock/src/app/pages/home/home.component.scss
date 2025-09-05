@@ -1,0 +1,158 @@
+body {
+  background-color: var(--color-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo com bolhas e blur */
+.home-container::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--color-secondary); /* cor principal da paleta */
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+  filter: blur(150px);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.home-container::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--color-secondary); /* cor secundária da paleta */
+  border-radius: 50%;
+  bottom: -80px;
+  right: -80px;
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Header fixo */
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--color-secondary);
+  color: #F9F4F5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 10;
+}
+
+/* Produtos */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  position: relative; /* fica acima do fundo */
+  z-index: 1;
+
+  .product-card img {
+  width: 100%;          // ocupa toda a largura do card
+  height: 180px;        // define uma altura fixa ou você pode usar auto
+  object-fit: cover;    // mantém a proporção e corta excesso
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+
+  .product-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+    h3 {
+      color: #502F4C;
+      margin: 0.5rem 0;
+    }
+
+    p {
+      color: #70587C;
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      margin-top: 0.5rem;
+    }
+  }
+}
+.cart-button {
+  position: relative;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+
+  &:hover {
+    background: var(--color-secondary);
+  }
+
+  .material-icons {
+    color: var(--color-black);
+    font-size: 24px;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--color-primary);
+    color: var(--color-black);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.add-button {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+
+  &:hover {
+    background: var(--color-secondary);
+    color: var(--color-black);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+
